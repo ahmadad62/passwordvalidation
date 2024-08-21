@@ -17,6 +17,7 @@ class MainTest {
         assertFalse(result1,"Password length check failed");
         assertTrue(result2,"Password length is more than 8 characters and result is true");
     }
+
     @Test
     void isPasswordIncludeDigits(){
         String password1 = "password12";
@@ -26,6 +27,9 @@ class MainTest {
         boolean result2=Main.passwordIncludeDigitCheck(password2);
 
         assertTrue(result1,"Password include digits check is ok");
-        assertTrue(result2,"Password include digits check failed");
+        assertFalse(result2,"Password include digits check failed");
     }
+
+
+
 }
