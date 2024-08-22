@@ -8,9 +8,9 @@ public class Main {
 
     }
 
-    public static boolean passwordLengthCheck(String password) {
-        //TODO length should be change to interactive
-        return password.length() >= 12;
+    public static boolean passwordLengthCheck(String password ,int length) {
+
+        return password.length() >= length;
     }
 
     public static boolean passwordIncludeDigitCheck(String password) {
@@ -76,7 +76,7 @@ public class Main {
 
         String password= RandomPasswordGenerator(length);
         System.out.println("Password: " + password);
-        System.out.println("Password Length: " + (passwordLengthCheck(password)? "Passed":"Failed"));
+        System.out.println("Password Length: " + (passwordLengthCheck(password,length)? "Passed":"Failed"));
         System.out.println("Password Include Digit Check: " + (passwordIncludeDigitCheck(password) ? "Passed" : "Failed"));
         System.out.println("Uppercase Checker: " + (uppercaseChecker(password) ? "Passed" : "Failed"));
         System.out.println("Lowercase Checker: " + (LowercaseChecker(password) ? "Passed" : "Failed"));

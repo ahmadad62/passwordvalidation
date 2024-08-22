@@ -7,15 +7,14 @@ class MainTest {
 
     @Test
     void isPasswordLengthChecker(){
-        //Given
-        String password1 = "short";
-        String password2 = "is@sufficient";
-        //When
-        boolean result1=Main.passwordLengthCheck(password1);
-        boolean result2=Main.passwordLengthCheck(password2);
-        //Then
-        assertFalse(result1,"Password length check failed");
-        assertTrue(result2,"Password length is more than 8 characters and result is true");
+
+        assertTrue(Main.passwordLengthCheck("shortpassword", 8), "Password should be valid for length 8");
+        assertTrue(Main.passwordLengthCheck("longpassword", 8), "Password should be valid for length 8");
+        assertFalse(Main.passwordLengthCheck("short", 8), "Password should be invalid for length 8");
+        assertTrue(Main.passwordLengthCheck("exactly12d@f", 12), "Password should be valid for length 12");
+        assertFalse(Main.passwordLengthCheck("exactly12", 15), "Password should be invalid for length 15");
+        assertTrue(Main.passwordLengthCheck("", 0), "Empty password should be valid for length 0");
+
     }
 
     @Test
@@ -62,7 +61,7 @@ class MainTest {
     String generatedPassword=Main.RandomPasswordGenerator(length);
         System.out.println(i+" "+generatedPassword);
     assertEquals(length,generatedPassword.length());
-    assertTrue(Main.passwordLengthCheck(generatedPassword));
+    assertTrue(Main.passwordLengthCheck(generatedPassword,length));
     assertTrue(Main.passwordIncludeDigitCheck(generatedPassword));
     assertTrue(Main.uppercaseChecker(generatedPassword));
     assertTrue(Main.LowercaseChecker(generatedPassword));
