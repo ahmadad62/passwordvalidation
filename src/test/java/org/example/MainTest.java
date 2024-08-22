@@ -6,10 +6,10 @@ import static org.junit.jupiter.api.Assertions.*;
 class MainTest {
 
     @Test
-    void isPasswordLengthEightOrMore(){
+    void isPasswordLengthChecker(){
         //Given
         String password1 = "short";
-        String password2 = "sufficient";
+        String password2 = "is@sufficient";
         //When
         boolean result1=Main.passwordLengthCheck(password1);
         boolean result2=Main.passwordLengthCheck(password2);
@@ -54,5 +54,18 @@ class MainTest {
         assertFalse(result1,"Lowercase checker is not ok");
         assertTrue(result2,"Lowercase checker is ok");
     }
+@Test
+    void RandomPasswordChecker(){
+    int length=12;
+    for(int i=0;i<50;i++){
 
+    String generatedPassword=Main.RandomPasswordGenerator(length);
+        System.out.println(i+" "+generatedPassword);
+    assertEquals(length,generatedPassword.length());
+    assertTrue(Main.passwordLengthCheck(generatedPassword));
+    assertTrue(Main.passwordIncludeDigitCheck(generatedPassword));
+    assertTrue(Main.uppercaseChecker(generatedPassword));
+    assertTrue(Main.LowercaseChecker(generatedPassword));
+    }
+}
 }
