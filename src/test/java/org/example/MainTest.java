@@ -1,5 +1,6 @@
 package org.example;
 
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -53,18 +54,14 @@ class MainTest {
         assertFalse(result1,"Lowercase checker is not ok");
         assertTrue(result2,"Lowercase checker is ok");
     }
-@Test
+@RepeatedTest(50)
     void RandomPasswordChecker(){
     int length=12;
-    for(int i=0;i<50;i++){
-
     String generatedPassword=Main.RandomPasswordGenerator(length);
-        System.out.println(i+" "+generatedPassword);
     assertEquals(length,generatedPassword.length());
     assertTrue(Main.passwordLengthCheck(generatedPassword,length));
     assertTrue(Main.passwordIncludeDigitCheck(generatedPassword));
     assertTrue(Main.uppercaseChecker(generatedPassword));
     assertTrue(Main.LowercaseChecker(generatedPassword));
-    }
 }
 }
