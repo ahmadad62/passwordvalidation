@@ -2,6 +2,8 @@ package org.example;
 
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 class MainTest {
@@ -16,6 +18,19 @@ class MainTest {
         assertFalse(Main.passwordLengthCheck("exactly12", 15), "Password should be invalid for length 15");
         assertTrue(Main.passwordLengthCheck("", 0), "Empty password should be valid for length 0");
 
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "'shortpassword', 8, true, 'Password should be valid for length 8'",
+            "'longpassword', 8, true, 'Password should be valid for length 8'",
+            "'short', 8, false, 'Password should be invalid for length 8'",
+            "'exactly12d@f', 12, true, 'Password should be valid for length 12'",
+            "'exactly12', 15, false, 'Password should be invalid for length 15'",
+            "'', 0, true, 'Empty password should be valid for length 0'"
+    })
+    void isPasswordLengthChecker(String password, int length, boolean expected, String message) {
+        assertEquals(expected, Main.passwordLengthCheck(password, length), message);
     }
 
     @Test
