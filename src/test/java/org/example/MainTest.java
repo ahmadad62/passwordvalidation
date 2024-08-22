@@ -30,6 +30,29 @@ class MainTest {
         assertFalse(result2,"Password include digits check failed");
     }
 
+    @Test
+    void isUppercaseIsInclude(){
+            String password1 = "password123";
+            String password2 = "Password123";
 
+        boolean result1=Main.uppercaseChecker(password1);
+        boolean result2=Main.uppercaseChecker(password2);
+
+        assertFalse(result1,"Uppercase checker is not ok");
+        assertTrue(result2,"Uppercase checker is ok");
+
+    }
+
+    @Test
+    void isLowercaseIsInclude(){
+        String password1 = "PASSWORD1";
+        String password2 = "Aa345678";
+
+        boolean result1=Main.LowercaseChecker(password1);
+        boolean result2=Main.LowercaseChecker(password2);
+
+        assertFalse(result1,"Lowercase checker is not ok");
+        assertTrue(result2,"Lowercase checker is ok");
+    }
 
 }
