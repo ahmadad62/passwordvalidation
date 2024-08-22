@@ -16,7 +16,7 @@ public class Main {
         }
     }
         return false;
-    };
+    }
 
     public static boolean uppercaseChecker(String password) {
         for(int i=0;i<password.length(); i++) {
@@ -25,7 +25,7 @@ public class Main {
             }
         }
             return false;
-    };
+    }
 
     public static boolean LowercaseChecker(String password) {
         for (int i=0; i< password.length();i++){
